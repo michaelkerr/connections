@@ -39,9 +39,13 @@ def get_con_JSON(in_file):
 		except:
 			data_dict['PostID'] = entry["Id"]
 		try:
-			data_dict['PostDate'] = entry["PostDate"]
+			data_dict['PostDate'] = entry["PostDate"].split("T")[0].replace('-', '')
 		except:
-			data_dict['PostDate'] = entry["Date"]
+			data_dict['PostDate'] = entry["Date"].split("T")[0].replace('-', '')
+		try:
+			data_dict['PostTime'] = entry["PostDate"].split("T")[1].replace(':', '')
+		except:
+			data_dict['PostTime'] = entry["Date"].split("T")[1].replace(':', '')
 		#Network
 		data_dict['Network'] = json.dumps(entry["Domain"], ensure_ascii=False, encoding="utf-8").replace('\"', '')
 		#>>Author
@@ -68,12 +72,7 @@ def get_con_JSON(in_file):
 			proj_list.append(data_dict['Project'])
 		if data_dict['Network'] not in net_list:
 			net_list.append(data_dict['Network'])
-		'''
-		if data_dict['Author'] not in aut_list:
-			aut_list.append((data_dict['Author'], data_dict['Network']))
-		if data_dict['Connection'] not in aut_list:
-			aut_list.append((data_dict['Connection'], data_dict['Network']))
-		'''
+
 		data_list.append(data_dict)
 		data_dict = {}
 	return data_list, proj_list, net_list
@@ -85,6 +84,9 @@ def get_con_JSON(in_file):
 
 #TODO add logging
 
+## >Get the start time of the script
+script_start_time = datetime.now()
+
 ## >Get the list of files
 local_path = os.path.dirname(os.path.realpath(__file__))
 files = os.listdir(local_path)
@@ -94,7 +96,17 @@ graph_db = neo4j.GraphDatabaseService(server_url)
 
 ## >Clear the Graph, nodes and rels
 #TODO REMOVE THIS
-graph_db.clear()
+#graph_db.clear()
+
+## >Add a root node if one does not exist
+#TODO Abstract this for multiple instances, how do we pass this?
+instance_name = "Coral"
+node_index = graph_db.get_index(neo4j.Node, "node_auto_index")
+if (len(node_index.get("name", instance_name)) == 0):
+	instance_node, = graph_db.create({"name": instance_name, "type": "instance_root"})
+	print 'Created instance node: ' + instance_name
+else:
+	instance_node = node_index.get("name", instance_name)[0]
 
 ## >For each filename in the filelist
 for filename in files:
@@ -116,7 +128,12 @@ for filename in files:
 			## >If the project isnt in the index
 			#TODO Batch This
 			if (len(node_index.get("name", entry)) == 0):
-				graph_db.create({"name": entry, "type": "project"})
+				new_project_node, = graph_db.create({"name": entry, "type": "project"})
+			else:
+				new_project_node, = node_index.get("name", entry)
+			## >Create a relationship to the instance root node, if it doesnt exist
+			if len(list(graph_db.match(start_node=instance_node, end_node=new_project_node))) == 0:
+				graph_db.create((instance_node, "links", new_project_node))
 
 		## >Create Network nodes if they dont exist
 		node_index = graph_db.get_index(neo4j.Node, "node_auto_index")
@@ -147,7 +164,7 @@ for filename in files:
 						## >The node exists
 						entry_author = author_node
 						found_node = 1
-						print 'Node: ' + entry['Author'] + 'exists. Skipping'
+						#print 'Node "' + entry['Author'] + '" exists. Skipping'
 				if found_node != 1:
 					entry_author, = graph_db.create({"name": entry['Author'], "type": "author", "network": entry['Network']})
 					print ">Adding Author Node: " + entry['Author'] + ' to ' + entry['Network']
@@ -168,7 +185,7 @@ for filename in files:
 						## >The node exists
 						entry_connection = author_node
 						found_node = 1
-						print 'Node: ' + entry['Connection'] + 'exists. Skipping'
+						#print 'Node "' + entry['Connection'] + '" exists. Skipping'
 				if found_node != 1:
 					entry_connection, = graph_db.create({"name": entry['Connection'], "type": "author", "network": entry['Network']})
 					print ">Adding Author(C) Node: " + entry['Connection'] + ' to ' + entry['Network']
@@ -181,7 +198,7 @@ for filename in files:
 			project_node = node_index.get("name", entry['Project'])[0]
 
 			## >If the Network-->Project relationship doesnt exist
-			#TODO speed this up, either through a local store, or a read batch?
+			#TODO speed this up
 			if len(list(graph_db.match(start_node=network_node, end_node=project_node))) == 0:
 				print "Adding N-->P relationship: " + entry['Project'] + ' --> ' + entry['Network']
 				## >Create a new Network-->Project relationship
@@ -202,21 +219,31 @@ for filename in files:
 			## >Create the Author-->Connection relationship
 			rel_prop_dict = {"name": entry['PostID'],
 					"date": entry['PostDate'],
+					"time": entry['PostTime'],
 					"type": entry['Type'],
 					"subforum": entry['Subforum'],
 					"scored_project": entry['Project'],
 					"scored_topic": entry['Topic']}
 
+			#TODO check if the relationship already exists before adding
 			graph_db.create((entry_author, "talks_to", entry_connection, rel_prop_dict))
 			print "Adding Author-->Connection relationship: " + entry['Author'] + ' --> ' + entry['Connection']
 
 		## >Print the number of nodes in the graph
+		#TODO log this
 		nodes_final = graph_db.order
 		rels_final = graph_db.size
 		print str(graph_db.order) + " nodes in the graph. >> Added " + str(nodes_final - nodes_start) + " nodes"
 		print str(graph_db.size) + " relationships in the graph. >> Added " + str(rels_final - rels_start) + " relationships"
 
 		## >Print the time related stats
+		#TODO log this
 		end_time = datetime.now()
 		stats = end_time - start_time
 		print "File completed in: " + str(stats)
+
+## >Print the time related stats
+#TODO log this
+script_end_time = datetime.now()
+script_stats = script_end_time - script_start_time
+print "Script completed in: " + str(script_stats)
