@@ -1,0 +1,173 @@
+[{
+    "Processed": "20140127084327865077",
+    "SourceType": "Forum/Blog",
+    "RunType": "all",
+    "TotalPosts": 1234567,
+    "TotalThreads": 1234567,
+    "Network": {
+        "cnn.com": {
+            "TotalPosts": 1234567,
+            "TotalThreads": 1234567
+        },
+        "siasat.pk": {
+            "TotalPosts": 1234567,
+            "TotalThreads": 1234567
+        }
+    },
+    "Projects": {
+        "0E3734B4-C177-4728-866C-32977F4A1E33": {
+            "ProjectName": "AQ(A)",
+            "ProjectPosts": 1234567,
+            "ProjectThreads": 1234567,
+            "Topics": {
+                "7e116d42-7bd8-4cb3-83fa-9e2bc97fa556": {
+                    "TopicName": "AQAA Non Violent Activity",
+                    "TotalPosts": 1234567,
+                    "TotalThreads": 1234567
+                },
+                "bb8dbc47-cf2a-4d79-b82b-1e6cab798c0a": {
+                    "TopicName": "AQ Ideology",
+                    "TotalPosts": 1234567,
+                    "TotalThreads": 1234567
+                }
+            }
+        },
+        "49389D58-F658-4C07-9615-22A8AA411E54": {
+            "ProjectName": "EMI(A)",
+            "ProjectPosts": 1234567,
+            "Projectreads": 1234567,
+            "Topics": {
+                "7e116d42-7bd8-4cb3-83fa-9e2bc97fa556": {
+                    "TopicName": "AQAA Non Violent Activity",
+                    "TopicPosts": 1234567,
+                    "TopicThreads": 1234567
+                },
+                "bb8dbc47-cf2a-4d79-b82b-1e6cab798c0a": {
+                    "TopicName": "AQ Ideology",
+                    "TopicPosts": 1234567,
+                    "TopicThreads": 1234567
+                }
+            }
+        }
+    }
+},
+{
+    "Processed": "20140127084327865077",
+    "SourceType": "Twitter",
+    "RunType": "all",
+    "TotalPosts": 1234567,
+    "TotalThreads": 1234567,
+    "Projects": {
+        "0E3734B4-C177-4728-866C-32977F4A1E33": {
+            "ProjectName": "AQ(A)",
+            "ProjectPosts": 1234567,
+            "ProjectThreads": 1234567,
+            "Topics": {
+            }
+        },
+        "49389D58-F658-4C07-9615-22A8AA411E54": {
+            "ProjectName": "EMI(A)",
+            "ProjectPosts": 1234567,
+            "Projectreads": 1234567,
+            "Topics": {
+                "7e116d42-7bd8-4cb3-83fa-9e2bc97fa556": {
+                    "TopicName": "AQAA Non Violent Activity",
+                    "TopicPosts": 1234567,
+                    "TopicThreads": 1234567
+                },
+                "bb8dbc47-cf2a-4d79-b82b-1e6cab798c0a": {
+                    "TopicName": "AQ Ideology",
+                    "TopicPosts": 1234567,
+                    "TopicThreads": 1234567
+                }
+            }
+        }
+    }
+},
+{
+    "Processed": "20140127084327865077",
+    "SourceType": "Forum/Blog",
+    "RunType": "scoring",
+    "TotalPosts": 1234567,
+    "TotalThreads": 1234567,
+    "Network": {
+        "cnn.com": {
+            "TotalPosts": 1234567,
+            "TotalThreads": 1234567
+        },
+        "siasat.pk": {
+            "TotalPosts": 1234567,
+            "TotalThreads": 1234567
+        }
+    },
+    "Projects": {
+        "0E3734B4-C177-4728-866C-32977F4A1E33": {
+            "ProjectName": "AQ(A)",
+            "ProjectPosts": 1234567,
+            "ProjectThreads": 1234567,
+            "Topics": {
+                "7e116d42-7bd8-4cb3-83fa-9e2bc97fa556": {
+                    "TopicName": "AQAA Non Violent Activity",
+                    "TotalPosts": 1234567,
+                    "TotalThreads": 1234567
+                },
+                "bb8dbc47-cf2a-4d79-b82b-1e6cab798c0a": {
+                    "TopicName": "AQ Ideology",
+                    "TotalPosts": 1234567,
+                    "TotalThreads": 1234567
+                }
+            }
+        },
+        "49389D58-F658-4C07-9615-22A8AA411E54": {
+            "ProjectName": "EMI(A)",
+            "ProjectPosts": 1234567,
+            "Projectreads": 1234567,
+            "Topics": {
+                "7e116d42-7bd8-4cb3-83fa-9e2bc97fa556": {
+                    "TopicName": "AQAA Non Violent Activity",
+                    "TopicPosts": 1234567,
+                    "TopicThreads": 1234567
+                },
+                "bb8dbc47-cf2a-4d79-b82b-1e6cab798c0a": {
+                    "TopicName": "AQ Ideology",
+                    "TopicPosts": 1234567,
+                    "TopicThreads": 1234567
+                }
+            }
+        }
+    }
+},
+{
+    "Processed": "20140127084327865077",
+    "SourceType": "Twitter",
+    "RunType": "scoring",
+    "TotalPosts": 1234567,
+    "TotalThreads": 1234567,
+    "Projects": {
+        "0E3734B4-C177-4728-866C-32977F4A1E33": {
+            "ProjectName": "AQ(A)",
+            "ProjectPosts": 1234567,
+            "ProjectThreads": 1234567,
+            "Topics": {
+            }
+        },
+        "49389D58-F658-4C07-9615-22A8AA411E54": {
+            "ProjectName": "EMI(A)",
+            "ProjectPosts": 1234567,
+            "Projectreads": 1234567,
+            "Topics": {
+                "7e116d42-7bd8-4cb3-83fa-9e2bc97fa556": {
+                    "TopicName": "AQAA Non Violent Activity",
+                    "TopicPosts": 1234567,
+                    "TopicThreads": 1234567
+                },
+                "bb8dbc47-cf2a-4d79-b82b-1e6cab798c0a": {
+                    "TopicName": "AQ Ideology",
+                    "TopicPosts": 1234567,
+                    "TopicThreads": 1234567
+                }
+            }
+        }
+    }
+}
+]

@@ -1,0 +1,98 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "properties": {
+    "Author": {
+      "type": "string",
+      "id": "Author",
+      "required": true
+    },
+    "Entity": {
+      "type": "string",
+      "id": "Connection",
+      "required": true
+    },
+    "Network": {
+      "type": "string",
+      "id": "Network",
+      "required": true
+    },
+    "PostDate": {
+      "type": "string",
+      "id": "PostDate",
+      "required": true
+    },
+    "PostID": {
+      "type": "string",
+      "id": "PostID",
+      "required": true
+    },
+    "Subforum": {
+      "type": "string",
+      "id": "Subforum",
+      "required": false
+    },
+    "Type": {
+      "type": "string",
+      "id": "Type",
+      "required": true
+    },
+    "Scoring": {
+      "type": "object",
+      "id": "Scoring",
+      "properties": {
+        "Scored": {
+          "type": "object",
+          "id": "Scored",
+          "properties": {
+            "ProjectName": {
+              "type": "object",
+              "id": "ProjectName",
+              "required": false,
+              "Topics": {
+                "type": "string",
+                "id": "Topics",
+                "required": false,
+                "properties": {
+                  "Topics": {
+                    "type": "object",
+                    "id": "TopicName",
+                    "required": false,
+                    "properties": {
+                      "Score": {
+                        "type": "string",
+                        "id": "http://jsonschema.net/0/Scoring/Scored/A57DFA82-7021-4E36-A3E8-1B3EA9FA2243/Topics/bd728d5d-23c5-4bdb-b75c-c4490c5c515f/Score",
+                        "required": false
+                      },
+                      "TopicName": {
+                        "type": "string",
+                        "id": "http://jsonschema.net/0/Scoring/Scored/A57DFA82-7021-4E36-A3E8-1B3EA9FA2243/Topics/bd728d5d-23c5-4bdb-b75c-c4490c5c515f/TopicName",
+                        "required": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "Irrelevant": {
+          "type": "object",
+          "id": "Irrelevant",
+          "required": false,
+          "properties": {
+            "ProjectName": {
+              "type": "string",
+              "id": "ProjectName",
+              "required": false
+            }
+          }
+        }
+      },
+      "required": false
+    }
+  },
+  "required": false
+}

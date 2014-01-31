@@ -1,9 +1,9 @@
 #!/usr/bin/python2.7.3
 # -*- coding: utf-8 -*-
-# Twitter project specific connections update #
+# Twitter project specific TEST #
 #################
 # Created Date: 2014/01/28
-# Last Updated: 2014/01/31
+# Last Updated: 2014/01/28
 
 ### Resources ###
 import datetime
