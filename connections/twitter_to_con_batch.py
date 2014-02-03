@@ -1,6 +1,6 @@
 #!/usr/bin/python2.7.3
 # -*- coding: utf-8 -*-
-# Twitter to connections, daily #
+# Twitter to connections, batch #
 #################
 # Created Date: 2014/01/21
 # Last Updated: 2014/01/28
@@ -90,15 +90,14 @@ def yesterday():
 start_time = datetime.datetime.now()
 
 #TODO remove - testing only
-#Clear the databases
+#Clear the collections
 #author_collection.remove()
 #entity_collection.remove()
 
 ## >SQL cursor
 cur = db.cursor()
 
-## >Get all "New" Tweets
-#TODO  -determine efficient way to get "new"
+## >Get date range
 start_date = datetime.date(2013, 1, 01)
 end_date = datetime.date(2014, 1, 27)
 day = datetime.timedelta(days=1)
@@ -161,7 +160,7 @@ for tweet_date in daterange(start_date, end_date):
 						for mention in tweet_body['entities']['user_mentions']:
 							## >Create the connection
 							## >Type = 'mention'
-							mention_dict = update_con_dict(data_dict, mention['id_str'], 'Mention')
+							mention_dict = update_con_dict(data_dict, mention['name'], 'Mention')
 							if mention_dict not in connection_list:
 								connection_list.append(mention_dict)
 

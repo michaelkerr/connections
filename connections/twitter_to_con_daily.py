@@ -1,6 +1,6 @@
 #!/usr/bin/python2.7.3
 # -*- coding: utf-8 -*-
-# Twitter to connections #
+# Twitter to connections, daily #
 #################
 # Created Date: 2014/01/21
 # Last Updated: 2014/01/22
@@ -76,9 +76,9 @@ def yesterday():
 start_time = datetime.datetime.now()
 
 #TODO remove - testing only
-#Clear the databases
-author_collection.remove()
-entity_collection.remove()
+#Clear the collections
+#author_collection.remove()
+#entity_collection.remove()
 
 ## >SQL cursor
 cur = db.cursor()
@@ -143,7 +143,7 @@ if len(tweet_data) > 0:
 					for mention in tweet_body['entities']['user_mentions']:
 						## >Create the connection
 						## >Type = 'mention'
-						mention_dict = update_con_dict(data_dict, mention['id_str'], 'Mention')
+						mention_dict = update_con_dict(data_dict, mention['name'], 'Mention')
 						if mention_dict not in connection_list:
 							connection_list.append(mention_dict)
 
