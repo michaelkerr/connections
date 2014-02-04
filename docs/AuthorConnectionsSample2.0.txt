@@ -8,43 +8,60 @@
     "Subforum": "Sports",
     "Type": "Mention",
     "Scoring": {
-	"Scored": {
-	    "49389D58-F658-4C07-9615-22A8AA411E54": {
-		"ProjectName": "AQ(A)",
-		"Topics": {
-		    "7e116d42-7bd8-4cb3-83fa-9e2bc97fa556": {
-			"TopicName": "AQAA Non Violent Activity",
-			"Score": "Positive"
-		    },
-		    "bb8dbc47-cf2a-4d79-b82b-1e6cab798c0a": {
-			"TopicName": "AQ Ideology",
-			"Score": "Negative"
+        "Scored": [
+            {
+                "ProjectId": "49389D58-F658-4C07-9615-22A8AA411E54", 
+                "ProjectName": "AQ(A)",
+    			"Topics": [
+    				{
+                        "TopicId": "7e116d42-7bd8-4cb3-83fa-9e2bc97fa556",
+                        "TopicName": "AQAA Non Violent Activity",
+                        "Score": "Positive"
+    				},
+    				{
+    				    "TopicId": "bb8dbc47-cf2a-4d79-b82b-1e6cab798c0a",
+    				    "TopicName": "AQ Ideology",
+    				    "Score": "Negative"
+    				}
+    			]
+    		},
+    	    {
+                "ProjectId": "A57DFA82-7021-4E36-A3E8-1B3EA9FA2243",
+    			"ProjectName": "GCC(A)",
+    			"Topics": [
+    				{
+    					"TopicId": "bd728d5d-23c5-4bdb-b75c-c4490c5c515f",
+    					"TopicName": "VEO Ideology",
+    					"Score": "Neutral"
+    				}
+    			]
+    		}
+    	],
+	    "Irrelevant": [
+            {
+			    "ProjectId": "0E3734B4-C177-4728-866C-32977F4A1E33",
+			    "ProjectName": "EMI(A)"
 		    }
-		}
-	    },
-	    "A57DFA82-7021-4E36-A3E8-1B3EA9FA2243": {
-		"ProjectName": "GCC(A)",
-		"Topics": {
-		    "bd728d5d-23c5-4bdb-b75c-c4490c5c515f": {
-			"TopicName": "VEO Ideology",
-			"Score": "Neutral"
+		]
+    },
+    "Matching": [
+        {
+            "ProjectId": "49389D58-F658-4C07-9615-22A8AA411E54", 
+            "ProjectName": "AQ(A)",
+	    "Topics": [
+                {
+                    "TopicId": "7e116d42-7bd8-4cb3-83fa-9e2bc97fa556",
+                    "TopicName": "AQAA Non Violent Activity"
+                },
+		        {
+                    "TopicId": "bb8dbc47-cf2a-4d79-b82b-1e6cab798c0a",
+                    "TopicName": "AQ Ideology"
 		    }
-		}
+		    ]
 	    }
-	},
-	"Irrelevant": {
-	    "0E3734B4-C177-4728-866C-32977F4A1E33": "EMI(A)"
-	}
-    },
-    "Matching": {
-	"49389D58-F658-4C07-9615-22A8AA411E54": {
-	    "ProjectName": "AQ(A)",
-	    "Topics": {
-		"7e116d42-7bd8-4cb3-83fa-9e2bc97fa556": "AQAA Non Violent Activity",
-		"bb8dbc47-cf2a-4d79-b82b-1e6cab798c0a": "AQ Ideology"
-	    }
-	}
-    },
-    "Meta": {
+	],
+    "Meta": 
+    {
+        
     }
 }]

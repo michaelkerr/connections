@@ -22,7 +22,7 @@ server_url = 'http://192.168.1.164:7474/db/data'
 graph_db = neo4j.GraphDatabaseService(server_url)
 ## >Clear the Graph, nodes and rels
 #TODO REMOVE THIS FOR PRODUCTION
-graph_db.clear()
+#graph_db.clear()
 
 
 ## Classes ###

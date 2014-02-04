@@ -133,7 +133,7 @@ if len(tweet_data) > 0:
 					data_dict['Meta']['projects'].append(topic)
 				data_dict['Meta']['topics'] = []
 			## >Add the twitter id_str to the meta
-			data_dict['Meta']['id_str'] = tweet_body['user']['id_str']
+			data_dict['Meta']['usr_id_str'] = tweet_body['user']['id_str']
 
 			## >Discover Mentions
 			if 'entities' in tweet_body.keys():

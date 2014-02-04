@@ -98,8 +98,8 @@ start_time = datetime.datetime.now()
 cur = db.cursor()
 
 ## >Get date range
-start_date = datetime.date(2013, 1, 01)
-end_date = datetime.date(2014, 1, 27)
+start_date = datetime.date(2014, 1, 01)
+end_date = datetime.date(2014, 1, 31)
 day = datetime.timedelta(days=1)
 daterange = lambda d1, d2: (d1 + datetime.timedelta(days=i) for i in range((d2 - d1).days + 1))
 
