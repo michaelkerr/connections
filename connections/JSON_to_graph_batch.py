@@ -3,7 +3,7 @@
 # JSON to graph, daily #
 #################
 # Created Date: 2014/01/28
-# Last Updated: 2014/02/03
+# Last Updated: 2014/02/05
 
 ### Resources ###
 from bson.objectid import ObjectId
@@ -154,6 +154,9 @@ for doc_date in daterange(start_date, end_date):
 		for topic in node_index.get("type", 'Topic'):
 			graph_topics.append(topic['id'])
 
+		## >Dictionary to hold network-->Project mappings
+		net_pro_dict = {}
+
 		## >For each connection document
 		for entry in con_docs:
 			matched_projects = []
@@ -195,6 +198,10 @@ for doc_date in daterange(start_date, end_date):
 								print 'Adding Project-->Topic relationship: ' + matched_project_node['id'] + '--includes-->' + matched_topic_node['id']
 								graph_db.create((matched_project_node, "includes", matched_topic_node))
 
+						## >Add the topic:project relationship to the temp dict if it isnt present
+						if temp_topic not in net_pro_dict.keys():
+							net_pro_dict[temp_topic] = item['ProjectId']
+
 			if 'Scoring' in entry.keys():
 				for item in entry['Scoring']:
 					## >Check if the project name is already in the graph
@@ -218,6 +225,10 @@ for doc_date in daterange(start_date, end_date):
 							## >Create the Project-->Topic relationship
 							print 'Adding Project-->Topic relationship: ' + scored_project_node['id'] + '--includes-->' + scored_topic_node['id']
 							graph_db.create((scored_project_node, "includes", scored_topic_node))
+
+						## >Add the topic:project relationship to the temp dict if it isnt present
+						if temp_topic not in net_pro_dict.keys():
+							net_pro_dict[temp_topic] = item['ProjectId']
 
 			## >Create the author nodes, if they dont exist
 			#TODO Turn this into a function

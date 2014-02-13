@@ -98,8 +98,8 @@ start_time = datetime.datetime.now()
 cur = db.cursor()
 
 ## >Get date range
-start_date = datetime.date(2014, 1, 01)
-end_date = datetime.date(2014, 1, 31)
+start_date = datetime.date(2013, 1, 1)
+end_date = datetime.date(2013, 01, 31)
 day = datetime.timedelta(days=1)
 daterange = lambda d1, d2: (d1 + datetime.timedelta(days=i) for i in range((d2 - d1).days + 1))
 
@@ -114,6 +114,7 @@ for tweet_date in daterange(start_date, end_date):
 
 	## >If there is any data
 	if len(tweet_data) > 0:
+		print 'Processing ' + str(len(tweet_data)) + ' tweets from ' + str(tweet_date)
 		for tweet in tweet_data:
 			data_dict = {}
 			connection_list = []
@@ -191,7 +192,6 @@ for tweet_date in daterange(start_date, end_date):
 
 				## >Upload author connections to mongodb
 				for connection in connection_list:
-					#if len(list(author_collection.find(connection).limit(1))) == 0:
 					if len(list(author_collection.find({
 							"PostTime": connection['PostTime'],
 							"PostDate": connection['PostDate'],
@@ -300,16 +300,17 @@ for tweet_date in daterange(start_date, end_date):
 						entity_list.append(source_dict)
 
 				## >Upload entity connections to mongodb
-				for entity in entity_list:
-					if len(list(entity_collection.find({
-						'PostTime': entity['PostTime'],
-						'PostDate': entity['PostDate'],
-						'PostID': entity['PostID'],
-						'Network': entity['Network'],
-						'Author': entity['Author'],
-						'Entity': entity['Entity'],
-						'Type': entity['Type']}))) == 0:
-							entity_collection.insert(entity)
+				#for entity in entity_list:
+					#print 'Adding ' + str(len(entity_list)) + 'Entities'
+					#if len(list(entity_collection.find({
+						#'PostTime': entity['PostTime'],
+						#'PostDate': entity['PostDate'],
+						#'PostID': entity['PostID'],
+						#'Network': entity['Network'],
+						#'Author': entity['Author'],
+						#'Entity': entity['Entity'],
+						#'Type': entity['Type']}))) == 0:
+							#entity_collection.insert(entity)
 
 			except ValueError as e:
 				print 'JSON Exception, Logging'
@@ -318,6 +319,8 @@ for tweet_date in daterange(start_date, end_date):
 					output_file.write(str(e) + '\n')
 					output_file.write(str(tweet[2]) + '\n')
 
+## >Create logging details
+#TODO Add # of items added to each, and per day
 print author_collection.count()
 print entity_collection.count()
 

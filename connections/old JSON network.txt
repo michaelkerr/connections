@@ -1,0 +1,98 @@
+ 
+	if len(list(graph_db.match(start_node=network_node, end_node=entry_author))) == 0:
+		#print "Adding N--> A relationship: " + entry['Network'] + ' --> ' + entry['Author']
+		## >Create a new Author-->Network relationship
+		graph_db.create((network_node, "contains", entry_author))
+	## >If the Network-->Connection(Author) relationship doesnt exist
+	if len(list(graph_db.match(start_node=network_node, end_node=entry_connection))) == 0:
+		#print "Adding N--> C(A) relationship: " + entry['Network'] + ' --> ' + entry['Connection']
+		## >Create a new Connection(Author)-->Network relationship
+		graph_db.create((network_node, "contains", entry_connection))
+		
+		
+		
+
+		
+		
+		
+		
+	if len(matched_topic_map.items() + scored_topic_map.items()) > 0:
+		print 'test 1'
+		rel_prop_dict = {"name": entry['PostID'],
+			"date": entry['PostDate'],
+			"time": entry['PostTime'],
+			"type": entry['Type'],
+			"subforum": None}
+
+		if entry['Network'] != 'twitter':
+			rel_prop_dict['subforum'] = entry['Subforum']
+
+		if len(matched_topic_map) > 0:
+			## >Create the Author-->Connection relationship for each matched topic
+			for topic_name, topic_node in matched_topic_map.iteritems():
+				rel_prop_dict['matched'] = topic
+				rel_prop_dict['project'] = top_proj_dict[topic]
+				graph_db.create((entry_author, "talks_to", entry_connection, rel_prop_dict))
+
+		#TODO Turn this into a function
+		if len(scored_topic_map) > 0:
+			rel_prop_dict = {"name": entry['PostID'],
+				"date": entry['PostDate'],
+				"time": entry['PostTime'],
+				"type": entry['Type'],
+				"subforum": None}
+
+			if entry['Network'] != 'twitter':
+				rel_prop_dict['subforum'] = entry['Subforum']
+
+			## >Create the Author-->Connection relationship
+			for topic in scored_topics:
+				rel_prop_dict['scored'] = topic
+				rel_prop_dict['project'] = top_proj_dict[topic]
+				#TODO add project
+				## >If there is no exiting relationship, create one
+				#TODO REDO REDO REDO REDO REDO REDO REDO REDO REDO
+				if is_rel_present(relationship_index.get("name", entry['PostID']), rel_prop_dict) is False:
+					print 'Adding Author-->Connection relationship: ' + entry['Author'] + ' --> ' + entry['Connection']
+					graph_db.create((entry_author, "talks_to", entry_connection, rel_prop_dict))
+				else:
+					print 'Relationship exists: ' + entry['Author'] + ' --> ' + entry['Connection']
+
+	elif len(matched_project_map.items() + scored_project_map.items()) > 0:
+		## >Create the Author-->Connection relationship for each matched project
+		rel_prop_dict = {"name": entry['PostID'],
+			"date": entry['PostDate'],
+			"time": entry['PostTime'],
+			"type": entry['Type'],
+			"subforum": None}
+
+		if entry['Network'] != 'twitter':
+			rel_prop_dict['subforum'] = entry['Subforum']
+
+		## >Create the Author-->Connection relationship
+		## >For Matched projects
+		for key, value in matched_project_map.iteritems():
+			rel_prop_dict['matched_project'] = key
+			graph_db.create((entry_author, "talks_to", entry_connection, rel_prop_dict))
+
+			## >If there is no exiting relationship, create one
+			#print relationship_index.get_or_create()
+
+		## >For Scored Projects
+		for key, value in scored_project_map.iteritems():
+			rel_prop_dict['scored_project'] = key
+			## >If there is no exiting relationship, create one
+			print 'test' #relationship_index.create_if_none(entry_author, "talks_to", entry_connection, rel_prop_dict)
+
+		'''
+		for project in doc_project_nodes:
+			rel_prop_dict['project'] = project
+			#TODO add project
+			
+			#TODO REDO REDO REDO REDO REDO REDO REDO REDO REDO
+			if is_rel_present(relationship_index.get("name", entry['PostID']), rel_prop_dict) is False:
+				print 'Adding Author-->Connection relationship: ' + entry['Author'] + ' --> ' + entry['Connection']
+				graph_db.create((entry_author, "talks_to", entry_connection, rel_prop_dict))
+			else:
+				print 'Relationship exists: ' + entry['Author'] + ' --> ' + entry['Connection']
+		'''

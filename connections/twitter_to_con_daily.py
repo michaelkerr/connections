@@ -77,8 +77,8 @@ start_time = datetime.datetime.now()
 
 #TODO remove - testing only
 #Clear the collections
-#author_collection.remove()
-#entity_collection.remove()
+author_collection.remove()
+entity_collection.remove()
 
 ## >SQL cursor
 cur = db.cursor()
@@ -97,6 +97,7 @@ tweet_data = cur.fetchall()
 
 ## >If there are any new tweets
 if len(tweet_data) > 0:
+	print 'Processing ' + str(len(tweet_data)) + ' tweets from ' + str(tweet_date)
 	for tweet in tweet_data:
 		data_dict = {}
 		connection_list = []
@@ -282,16 +283,17 @@ if len(tweet_data) > 0:
 					entity_list.append(source_dict)
 
 			## >Upload entity connections to mongodb
-			for entity in entity_list:
-				if len(list(entity_collection.find({
-					'PostTime': entity['PostTime'],
-					'PostDate': entity['PostDate'],
-					'PostID': entity['PostID'],
-					'Network': entity['Network'],
-					'Author': entity['Author'],
-					'Entity': entity['Entity'],
-					'Type': entity['Type']}))) == 0:
-						entity_collection.insert(entity)
+			#for entity in entity_list:
+				#print 'Adding ' + str(len(entity_list)) + 'Entities'
+				#if len(list(entity_collection.find({
+					#'PostTime': entity['PostTime'],
+					#'PostDate': entity['PostDate'],
+					#'PostID': entity['PostID'],
+					#'Network': entity['Network'],
+					#'Author': entity['Author'],
+					#'Entity': entity['Entity'],
+					#'Type': entity['Type']}))) == 0:
+						#entity_collection.insert(entity)
 
 		except ValueError as e:
 			print 'JSON Exception, Logging'

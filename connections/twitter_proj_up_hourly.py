@@ -51,6 +51,7 @@ con_docs = list(author_collection.find({"_id": {"$gte": ObjectId(objectid_r)}, "
 
 ## >If there are any new tweets
 if len(con_docs) > 0:
+	print 'Updating ' + str(len(con_docs)) + ' for project information'
 	for entry in con_docs:
 		## >Get the project information
 		projects = []

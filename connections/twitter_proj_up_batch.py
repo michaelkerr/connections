@@ -60,8 +60,8 @@ start_time = datetime.datetime.now()
 total_processed = 0
 
 ## >Get date range
-start_date = datetime.date(2014, 1, 1)
-end_date = datetime.date(2014, 1, 31)
+start_date = datetime.date(2013, 12, 1)
+end_date = datetime.date(2013, 12, 4)
 day = datetime.timedelta(days=1)
 daterange = lambda d1, d2: (d1 + datetime.timedelta(days=i) for i in range((d2 - d1).days + 1))
 
@@ -81,7 +81,8 @@ for doc_date in daterange(start_date, end_date):
 
 	## >If there are any new tweets
 	if len(con_docs) > 0:
-		total_processed += len(con_docs)
+		print 'Updating ' + str(len(con_docs)) + ' connections'
+		total_processed = total_processed + len(con_docs)
 		for entry in con_docs:
 			## >Get the project information
 			projects = []
