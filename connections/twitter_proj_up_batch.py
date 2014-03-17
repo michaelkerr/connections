@@ -60,8 +60,8 @@ start_time = datetime.datetime.now()
 total_processed = 0
 
 ## >Get date range
-start_date = datetime.date(2013, 12, 1)
-end_date = datetime.date(2013, 12, 4)
+start_date = datetime.date(2013, 1, 1)
+end_date = datetime.date(2014, 2, 17)
 day = datetime.timedelta(days=1)
 daterange = lambda d1, d2: (d1 + datetime.timedelta(days=i) for i in range((d2 - d1).days + 1))
 
@@ -76,13 +76,12 @@ for doc_date in daterange(start_date, end_date):
 	## >Get the documents that are in between those date by objectid
 	con_docs = list(author_collection.find({
 					'_id': {'$gte': ObjectId(start_objectid), '$lt': ObjectId(end_objectid)},
-					'Network': 'twitter'}
+					'Network': 'twitter.com'}
 					))
 
 	## >If there are any new tweets
 	if len(con_docs) > 0:
-		print 'Updating ' + str(len(con_docs)) + ' connections'
-		total_processed = total_processed + len(con_docs)
+		print 'Updating ' + str(len(con_docs)) + ' for project information'
 		for entry in con_docs:
 			## >Get the project information
 			projects = []
@@ -92,6 +91,7 @@ for doc_date in daterange(start_date, end_date):
 				entry['Matching'] = []
 				for project in projects:
 					project_dict = {}
+					project_dict[u'ProjectId'] = project
 					project_dict[u'ProjectName'] = project
 					project_dict[u'Topics'] = []
 					entry[u'Matching'].append(project_dict)
@@ -107,4 +107,4 @@ for doc_date in daterange(start_date, end_date):
 
 			author_collection.update({'_id': entry['_id']}, {'$set': {u'Matching': entry['Matching']}}, upsert=False)
 
-print 'Updated :' + str(total_processed) + ' connections'
+print 'Updated: ' + str(total_processed) + ' connections'

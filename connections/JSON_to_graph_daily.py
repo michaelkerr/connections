@@ -264,7 +264,7 @@ for entry in con_docs:
 	author_list = [entry_author, entry_connection]
 	tweet_source_list = []
 	## >If Network == twitter, create a list of source
-	if entry['Network'] == 'twitter':
+	if entry['Network'] == 'twitter.com':
 		if (u'sources' in entry['Meta'].keys()):
 			tweet_source_list = []
 			tweet_source_dict = {}
@@ -316,7 +316,7 @@ for entry in con_docs:
 		"type": entry['Type'],
 		"subforum": None}
 
-	if entry['Network'] != 'twitter':
+	if entry['Network'] != 'twitter.com':
 		rel_prop_dict['subforum'] = entry['Subforum']
 
 	## >Encode the project related info
@@ -333,8 +333,11 @@ for entry in con_docs:
 					#limit=None,
 					#bidirectional=False)
 	if len(auth_con_rels) == 0:
+		print 'Adding A-->A relationship: ' + entry_author['name'] + ' --> ' + entry_connection['name']
 		graph_db.create((entry_author, "talks_to", entry_connection, rel_prop_dict))
-
+	## >If it exists check to see if the matching & scoring has been updated
+	else:
+		pass
 	print 'Completed ' + str(i) + ' of ' + str(num_processed) + ' connections.'
 	i += 1
 
@@ -343,6 +346,7 @@ nodes_end = graph_db.order
 rels_end = graph_db.size
 
 ## >Validation
+node_index = graph_db.get_index(neo4j.Node, "node_auto_index")
 print 'Mongo Authors: ' + str(len(list(author_collection.distinct('Author'))))
 print 'Mongo Connections: ' + str(len(list(author_collection.distinct('Connection'))))
 print 'Graph Authors: ' + str(len(node_index.get('type', 'Author')))

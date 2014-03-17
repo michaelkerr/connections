@@ -1,0 +1,2 @@
+SOLR Index
+db.authorcons.ensureIndex({'PostID':1, 'Author':1, 'Connection':1, 'Type':1},{name:'con_index', unique:true, background:true})

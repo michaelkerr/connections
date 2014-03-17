@@ -47,7 +47,7 @@ start_time = datetime.datetime.now()
 objectid_r = recent_object_id()
 
 ## >Get all documents with the same date, or newer, then the created ObjectId
-con_docs = list(author_collection.find({"_id": {"$gte": ObjectId(objectid_r)}, "Network": 'twitter'}))
+con_docs = list(author_collection.find({"_id": {"$gte": ObjectId(objectid_r)}, "Network": 'twitter.com'}))
 
 ## >If there are any new tweets
 if len(con_docs) > 0:
