@@ -111,9 +111,7 @@ for tweet_date in daterange(start_date, end_date):
 			data_dict = {}
 			connection_list = []
 
-			"""
-			Author Connections
-			"""
+			""" Author Connections """
 			# Turn the tweet into dict
 			try:
 				tweet_body = tweet['_source']['twitter']
@@ -142,6 +140,18 @@ for tweet_date in daterange(start_date, end_date):
 				# Create the meta dict
 				data_dict['Meta'] = {}
 				data_dict['Meta']['usr_id_str'] = tweet_body['user']['id_str']
+
+				# Update project matching and twitter collection
+				projects = interaction_content['tag_tree']
+				data_dict['Matching'] = []
+				data_dict['Meta']['sources'] = []
+				for project, twit_source in projects.iteritems():
+					project_dict = {}
+					project_dict[u'ProjectId'] = project
+					project_dict[u'ProjectName'] = project
+					project_dict[u'Topics'] = []
+					data_dict[u'Matching'].append(project_dict)
+					data_dict['Meta']['sources'].append(twit_source)
 
 				""" Discover Mentions """
 				if 'mentions' in tweet_body.keys():
