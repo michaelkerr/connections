@@ -1,0 +1,42 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Connections",
+	"description": "author to author, automated connections",
+	"type": "object",
+	"properties": {
+		"Id":{
+			"description": "A Unique author identifier that is specific to unique authors per domain",
+			"type": "integer"
+		}
+		"Project":{
+			"description": "The IO Project Name",
+			"type": "string"
+		}
+		"Domain"{
+			"description": "The domain name where the conversation is occuring",
+			"type": "string"
+		}
+		"Subforum":{
+			"description": "The subforum of the domain where the conversation is occuring, could be Unknown",
+			"type": "string"
+		}
+		"Topic":{
+			"description": "The IO customer defined topic name for which the thread matched for",
+			"type": "string"
+		}
+		"Author":{
+			"description": "The author of the post",
+			"type": "string"
+		}
+		"Connection":{
+			"description": "Author being 'talked to'",
+			"type": "string"
+		}
+		"Weight":{
+			"description": "Number of occurences of this connection - will have the same Project, Domain, Sbforum, Topic, Author, and Connection",
+			"type": "integer"
+		}
+	},
+	"required":["Id", "Project", "Domain", "Subforum", "Topic", "Author", "Connection", "Weight"]
+}
+

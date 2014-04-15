@@ -1,0 +1,65 @@
+{
+    "_index":"thor_v2",
+    "_type":"tweet",
+    "_id":"394063682805956600",
+    "_score":1.0,
+    "_source" :
+    {
+    "interaction":
+        {
+        "author":
+            {
+            "avatar":"http://pbs.twimg.com/profile_images/378800000401511530/f89454167eb0038f18db9fab6a180c83_normal.jpeg",
+            "id":1723073798,
+            "language":"ar",
+            "link":"https://twitter.com/lovely_soso_140",
+            "name":"أبحاث علمية",
+            "username":"lovely_soso_140"
+            },
+        "content":"#تلوث_دواجن_الوطنية  اقوم بمساعدة الطلاب والمعلمين في اعداد البحوث العلمية وعروض البوربوينت وتلخيص الكتب والافلام القصيرة .",
+        "created_at":"Sat, 26 Oct 2013 11:31:17 +0000",
+        "id":"2b5c85441b287b25eaa701baf37f4c7e",
+        "link":"https://twitter.com/lovely_soso_140/status/394063682805956600",
+        "schema":{"version":3},
+        "source":"Twitter for iPhone",
+        "tag_tree":{"cbw":["keywords"]},
+        "type":"twitter",
+        "hashtags":["تلوث_دواجن_الوطنية"]
+        },
+    "twitter":
+        {
+        "created_at":"Sat, 26 Oct 2013 11:31:17 +0000",
+        "filter_level":null,
+        "id":394063682805956600,
+        "lang":"ar",
+        "source":"<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "text":"#تلوث_دواجن_الوطنية  اقوم بمساعدة الطلاب والمعلمين في اعداد البحوث العلمية وعروض البوربوينت وتلخيص الكتب والافلام القصيرة .",
+        "user":
+            {
+            "name":"أبحاث علمية",
+            "url":"",
+            "description":"فتاة سعودية احمل الباكلوريوس في اللغة الإنجليزية يمكنني مساعدتكم في اعداد البحوث بالعربية والإنجليزية والترجمة وعروض البوربوينت والمنشورات والافلام القصيرة",
+            "statuses_count":601,
+            "followers_count":1093,
+            "friends_count":2004,
+            "screen_name":"lovely_soso_140",
+            "profile_image_url":"http://pbs.twimg.com/profile_images/378800000401511530/f89454167eb0038f18db9fab6a180c83_normal.jpeg",
+            "profile_image_url_https":"https://pbs.twimg.com/profile_images/378800000401511530/f89454167eb0038f18db9fab6a180c83_normal.jpeg",
+            "lang":"ar",
+            "listed_count":1,
+            "location":"",
+            "id":1723073798,
+            "id_str":"1723073798",
+            "geo_enabled":false,
+            "verified":false,
+            "favorites_count":1,
+            "created_at":"Mon, 02 Sep 2013 18:09:19 +0000",
+            "time_zone":null
+            },
+        "hashtags":["تلوث_دواجن_الوطنية"]
+        },
+    "klout":{"score":0},
+    "language":{"tag":"ar"},
+    "vendorx":{"ingest":"sql","stream":"34582"}
+    }
+} 
