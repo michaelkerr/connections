@@ -12,7 +12,7 @@ import datetime
 from pymongo import MongoClient
 
 ## >MongoDB related
-mongoclient = MongoClient('192.168.1.152', 27017)
+mongoclient = MongoClient('XXX.XXX.XXX.XXX', 27017)
 mongo_db = mongoclient['connections']
 author_collection = mongo_db['authorcons']
 entity_collection = mongo_db['entitycons']
@@ -23,7 +23,7 @@ print author_collection.find({'PostDate': '20140204',
 			'Connection': 'BeautyArabian',
 			'Type': 'Reply',
 			'Matching': {
-				
+
 				}
 			}).count()
 

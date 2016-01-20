@@ -30,11 +30,11 @@ month_rev_dict = {
 		}
 
 db = MySQLdb.connect(host="ingest.cudb3djsmyrc.us-west-2.rds.amazonaws.com",
-			user="influence",
-			passwd="8RiV3wDYV6BWpKRt",
+			user="",
+			passwd="",
 			db="ingestdb")
 
-mongoclient = MongoClient('192.168.1.152', 27017)
+mongoclient = MongoClient('XXX.XXX.XXX.XXX', 27017)
 mongo_db = mongoclient['connections']
 author_collection = mongo_db['authorcons']
 

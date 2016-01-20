@@ -11,7 +11,7 @@ import json
 import os
 from py2neo import neo4j
 
-server_url = 'http://192.168.1.164:7474/db/data'
+server_url = 'http://XXX.XXX.XXX.XXX:7474/db/data'
 #filename = '13-10_SCORED_POSTS_AQ (RU)_9271_W-PostId.xml.txt'
 #filename = 'SCORED_POSTS_AQ (A)_2ndQtr-13-W_PostId.xml.txt'
 

@@ -10,7 +10,7 @@ import datetime
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 
-mongoclient = MongoClient('192.168.1.152', 27017)
+mongoclient = MongoClient('XXX.XXX.XXX.XXX', 27017)
 mongo_db = mongoclient['connections']
 author_collection = mongo_db['authorcons']
 entity_collection = mongo_db['entitycons']

@@ -10,7 +10,7 @@ import datetime
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 
-mongoclient = MongoClient('192.168.1.152', 27017)
+mongoclient = MongoClient('XXX.XXX.XXX.XXX', 27017)
 mongo_db = mongoclient['connections']
 author_collection = mongo_db['authorcons']
 entity_collection = mongo_db['entitycons']
@@ -59,7 +59,7 @@ daterange = lambda d1, d2: (d1 + datetime.timedelta(days=i) for i in range((d2 -
 
 ## >For each day in the time period
 for doc_date in daterange(start_date, end_date):
-	
+
 ## >Get all "New" connection documents from mongodb
 ## >Get the object id (date) of the last updated document
 objectid_r = recent_object_id()

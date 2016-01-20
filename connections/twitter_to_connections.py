@@ -21,8 +21,8 @@ month_rev_dict = {
 			'Jul': '07', 'Aug': '08', 'Sep': '09', 'Oct': '10', 'Nov': '11', 'Dec': '12'
 		}
 db = MySQLdb.connect(host="ingest.cudb3djsmyrc.us-west-2.rds.amazonaws.com",
-			user="influence",
-			passwd="8RiV3wDYV6BWpKRt",
+			user="",
+			passwd="",
 			db="ingestdb")
 
 ### Classes ###

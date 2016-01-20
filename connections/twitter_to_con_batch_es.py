@@ -37,7 +37,7 @@ es_timeout = 30.0
 es = elasticsearch.Elasticsearch(host=es_host, port=es_port, timeout=es_timeout)
 
 """ Mongdb related """
-mongoclient = MongoClient('192.168.1.152', 27017)
+mongoclient = MongoClient('XXX.XXX.XXX.XXX', 27017)
 mongo_db = mongoclient['connections']
 author_collection = mongo_db['testcons']
 
